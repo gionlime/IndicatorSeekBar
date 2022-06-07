@@ -280,15 +280,12 @@ seekBar.setOnSeekChangeListener(new OnSeekChangeListener() {
 So happy to receive your donation or encouraging words , and I will post this on my [ thanks-lists ](https://github.com/warkiz/IndicatorSeekBar#Thanks-lists)
 , thanks.
 
-## 打赏([ 支付宝 ](https://github.com/warkiz/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/alipay.png?raw=true))([ 微信支付 ](https://github.com/warkiz/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/wechat_pay.png?raw=true))
+## 打赏([ 支付宝 ](https://github.com/gionlime/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/alipay.jpeg?raw=true))([ 微信支付 ](https://github.com/gionlime/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/wechat_pay.jpeg))
 
 自从文档里公布了二维码，我收到国内的朋友的一些打赏，虽然金额不大，但是一些支持和鼓励的话语还是让我感到开心，非常感谢。
 
-感谢所有之前支持我的朋友。如果下次你要给我打赏，可以顺带写上你的github地址，我会在这里用[ 链接 ](https://github.com/warkiz/IndicatorSeekBar#Thanks-lists)贴出来，算是相互鼓励。
 
-## Thanks-lists
-
-<img src="https://github.com/gionlime/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/alipay.png?raw=true" /><img src="https://github.com/gionlime/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/wechat_pay.png?raw=true" />
+<img src="https://github.com/gionlime/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/alipay.jpeg?raw=true" /><img src="https://github.com/gionlime/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/wechat_pay.jpeg?raw=true" />
 
 ## Contact me
 

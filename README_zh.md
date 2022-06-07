@@ -4,34 +4,32 @@
 [![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
 [![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-IndicatorSeekBar-green.svg?style=flat )]( https://android-arsenal.com/details/1/6434 )
 
-这是一个安卓自定义SeekBar库。 另外, 如果你不需要指示器并且希望文字显示在SeekBar的顶部, 请看另外一个[SeekBar库](https://github.com/warkiz/TickSeekBar)。  [  English.md ](https://github.com/warkiz/IndicatorSeekBar/blob/master/README.md)
+This is a customizable SeekBar library on Android. Also, If you don't need indicator and want to show tick texts to top of seek bar, please see [the other library](https://github.com/warkiz/TickSeekBar).
+
+[ 中文.md ](https://github.com/warkiz/IndicatorSeekBar/blob/master/README_zh.md)
 
 
-## 预览
-
+## Overview
 <img src="https://github.com/warkiz/IndicatorSeekBar/blob/master/gif/overview.png?raw=true" width = "392" height = "115"/>
 
-
-## 截图
+## Screenshot
 
 <img src="https://github.com/warkiz/IndicatorSeekBar/blob/master/gif/continuous.gif?raw=true" width = "264" height = "464"/><img src="https://github.com/warkiz/IndicatorSeekBar/blob/master/gif/discrete_1.gif?raw=true" width = "264" height = "464"/><img src="https://github.com/warkiz/IndicatorSeekBar/blob/master/gif/discrete_2.gif?raw=true" width = "264" height = "464"/><img src="https://github.com/warkiz/IndicatorSeekBar/blob/master/gif/custom.gif?raw=true" width = "264" height = "464"/><img src="https://github.com/warkiz/IndicatorSeekBar/blob/master/gif/java_build.gif?raw=true" width = "264" height = "464"/><img src="https://github.com/warkiz/IndicatorSeekBar/blob/master/gif/indicator.gif?raw=true" width = "264" height = "464"/>
 
-## 演示
-[下载demo.apk](https://github.com/warkiz/IndicatorSeekBar/raw/master/apk/demo.apk)
+## Demo
+[download apk](https://github.com/warkiz/IndicatorSeekBar/raw/master/apk/demo.apk)
 
- 扫码下载：
-
+Scan QR code to download:
 <img src="https://github.com/warkiz/IndicatorSeekBar/blob/master/gif/downloadQRcode.png?raw=true" width = "100" height = "100"/>
 
 
-
-## 初始化
+## Setup
 
 ```gradle
 implementation 'com.github.warkiz.widget:indicatorseekbar:2.1.2'
 ```
 
-## 使用
+## Usage
 #### xml
 
 ```xml
@@ -58,14 +56,15 @@ implementation 'com.github.warkiz.widget:indicatorseekbar:2.1.2'
     app:isb_track_background_color="@color/color_gray"
     app:isb_track_background_size="2dp"
     app:isb_track_progress_color="@color/color_blue"
-    app:isb_track_progress_size="4dp" />
+    app:isb_track_progress_size="4dp"
+    app:isb_only_thumb_draggable="false"/>
 ```
 
 #### Java
 
 ```Java
 
- IndicatorSeekBar seekbar = IndicatorSeekBar
+ IndicatorSeekBar seekBar = IndicatorSeekBar
                 .with(getContext())
                 .max(110)
                 .min(10)
@@ -88,12 +87,15 @@ implementation 'com.github.warkiz.widget:indicatorseekbar:2.1.2'
                 .trackProgressSize(4)
                 .trackBackgroundColor(getResources().getColor(R.color.color_gray))
                 .trackBackgroundSize(2)
+		.onlyThumbDraggable(false)
                 .build();
 
 ```
 
-## 指示器总是停留
-将IndicatorSeekBar放进IndicatorStayLayout后可以使Indicator总是停留，在此之前，请确保你使用属性去显示indicator.
+## Indicator stay always
+
+Put IndicatorSeekBar into a IndicatorStayLayout can make the indicator stayed always.
+By the way, make sure you had called the attr to show the indicator before.
 
 #### Xml
 
@@ -105,7 +107,7 @@ implementation 'com.github.warkiz.widget:indicatorseekbar:2.1.2'
     <com.warkiz.widget.IndicatorSeekBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:isb_show_indicator="rectangle" <!--显示指示器属性不能为none-->
+        app:isb_show_indicator="rectangle" <!--show indicator can not be NONE-->
         ....../>
     <!--your layout-->
 </com.warkiz.widget.IndicatorStayLayout>
@@ -114,42 +116,55 @@ implementation 'com.github.warkiz.widget:indicatorseekbar:2.1.2'
 #### Java
 
 ```Java
-IndicatorSeekBar seekbar = IndicatorSeekBar
+IndicatorSeekBar seekBar = IndicatorSeekBar
                 .with(getContext())
                 .max(50)
                 .min(10)
-                .showIndicatorType(IndicatorType.RECTANGLE) //显示指示器属性不能为none
+                .showIndicatorType(IndicatorType.RECTANGLE) //show indicator can not be NONE
                 ...
                 .build();
 
-new IndicatorStayLayout(getContext()).attachTo(seekbar);
+new IndicatorStayLayout(getContext()).attachTo(seekBar);
 ```
 
-## 自定义指示器文字
+## Custom indicator's View
 
-向IndicatorSeekBar设置一个带有占位符的格式字符串,`${PROGRESS}` 或者 `${TICK_TEXT}`,指示器的文字就会改变.
+You can custom the indicator View by below way:
 
-例如:
-如果你想显示带百分号后缀的指示器进度文字: `%` ，代码如下：
+If you want to replace the indicator's View on top part, you can call:
+```Java
+ seekBar.getIndicator().setTopContentView(yourTopView);
+```
+
+or want to custom the indicator's View you want , you can call:
+```Java
+seekBar.getIndicator().setContentView(yourView);
+```
+
+## Custom indicator's text
+
+Set a format string with placeholder `${PROGRESS}` or `${TICK_TEXT}` to IndicatorSeekBar, the indicator's text would change.
+For example:
+If you want to show the progress with suffix: `%` ，the code like：
 
 ```Java
-seekbar.setIndicatorTextFormat("${PROGRESS} %")
+seekBar.setIndicatorTextFormat("${PROGRESS} %")
 
 Kotlin:
-seekbar.setIndicatorTextFormat("\${PROGRESS} %")
+seekBar.setIndicatorTextFormat("\${PROGRESS} %")
 ```
 
-如果你想显示带前缀 `I am`的指示器tick text文字 ，代码如下：
+or want to show the tick text with prefix: `I am` ，the code like：
 
 ```Java
-seekbar.setIndicatorTextFormat("I am ${TICK_TEXT}")
+seekBar.setIndicatorTextFormat("I am ${TICK_TEXT}")
 
 Kotlin:
-seekbar.setIndicatorTextFormat("I am \${TICK_TEXT}")
+seekBar.setIndicatorTextFormat("I am \${TICK_TEXT}")
 ```
 
-## 自定义每一节的track块颜色
-seekbar上每一块track的颜色都能被设置：
+## Custom section tracks color
+The color of every block of seek bar can also be custom.
 
 ```Java
 seekBar.customSectionTrackColor(new ColorCollector() {
@@ -165,11 +180,12 @@ seekBar.customSectionTrackColor(new ColorCollector() {
 });
 ```
 
-## 支持Selector类型的图片或颜色
+## Selector drawable&color were supported
 
-你可以为滑块和tick标记设置StateListDrawable 或者 ColorStateList, 而且，tick下面的文字也支持ColorStateList,使用的格式如下:
+You can set the StateListDrawable or ColorStateList for the thumb, tickMarks;
+also, ColorStateList for tickTexts is supported, too. Usage's format according to:
 
-滑块图片 selector:
+Thumb selector drawable:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -181,7 +197,7 @@ seekBar.customSectionTrackColor(new ColorCollector() {
 </selector>
 ```
 
-滑块颜色 selectorr:
+Thumb selector color:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -193,36 +209,36 @@ seekBar.customSectionTrackColor(new ColorCollector() {
 </selector>
 ```
 
-tick标记图片 selector：
+TickMarks selector drawable：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--this drawable is for tickMarks those are at left side of thumb-->
+    <!--this drawable is for tickMarks those are at start side of thumb-->
     <item android:drawable="@mipmap/ic_launcher_round" android:state_selected="true" />
     <!--for tickMarks in normal-->
     <item android:drawable="@mipmap/ic_launcher" />
 </selector>
 ```
 
-tick标记颜色 selector：
+TickMarks selector color：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--this color is for marks those are at left side of thumb-->
+    <!--this color is for marks those are at start side of thumb-->
     <item android:color="@color/colorAccent" android:state_selected="true" />
     <!--for marks those are at right side of thumb-->
     <item android:color="@color/color_gray" />
 </selector>
 ```
 
-tick文字颜色 selector：
+TickTexts selector color：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--this color is for texts those are at left side of thumb-->
+    <!--this color is for texts those are at start side of thumb-->
     <item android:color="@color/colorAccent" android:state_selected="true" />
     <!--for tick text which is stopped under thumb -->
     <item android:color="@color/color_blue" android:state_hovered="true" />
@@ -231,11 +247,11 @@ tick文字颜色 selector：
 </selector>
 ```
 
-## 监听器
+## Listener
 ```Java
 seekBar.setOnSeekChangeListener(new OnSeekChangeListener() {
             @Override
-            public void onSeeking(SeekParams p) {
+            public void onSeeking(SeekParams seekParams) {
                 Log.i(TAG, seekParams.seekBar);
                 Log.i(TAG, seekParams.progress);
                 Log.i(TAG, seekParams.progressFloat);
@@ -255,9 +271,6 @@ seekBar.setOnSeekChangeListener(new OnSeekChangeListener() {
         });
 ```
 
-## 属性
-
-[ attr.xml ](https://github.com/warkiz/IndicatorSeekBar/blob/master/indicatorseekbar/src/main/res/values/attr.xml)
 
 
 ## Donation by [ Paypal ](https://www.paypal.me/BuyMeACupOfTeaThx), thanks
@@ -265,33 +278,32 @@ seekBar.setOnSeekChangeListener(new OnSeekChangeListener() {
 So happy to receive your donation or encouraging words , and I will post this on my [ thanks-lists ](https://github.com/warkiz/IndicatorSeekBar#Thanks-lists)
 , thanks.
 
-## 打赏([ 支付宝 ](https://github.com/warkiz/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/alipay.png?raw=true))([ 微信支付 ](https://github.com/warkiz/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/wechat_pay.png?raw=true))
+## 打赏([ 支付宝 ](https://github.com/gionlime/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/alipay.jpeg?raw=true))([ 微信支付 ](https://github.com/gionlime/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/wechat_pay.jpeg))
 
 自从文档里公布了二维码，我收到国内的朋友的一些打赏，虽然金额不大，但是一些支持和鼓励的话语还是让我感到开心，非常感谢。
 
-感谢所有之前支持我的朋友。如果下次你要给我打赏，可以顺带写上你的github地址，我会在这里用[ 链接 ](https://github.com/warkiz/IndicatorSeekBar#Thanks-lists)贴出来，算是相互鼓励。
 
-<img src="https://github.com/warkiz/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/alipay.png?raw=true" /><img src="https://github.com/warkiz/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/wechat_pay.png?raw=true" />
+<img src="https://github.com/gionlime/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/alipay.jpeg?raw=true" /><img src="https://github.com/gionlime/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/wechat_pay.jpeg?raw=true" />
 
-## 联系我
+## Contact me
 
-如果你对项目有疑问，欢迎通过下面的方式联系我:
-1. 提交issue.
-2. 发邮件, "warkiz".concat("4j").concat("@").concat("gmail.com")
+Feel free to contact me if you have any trouble on this project:
+1. Create an issue.
+2. Send mail to me, "warkiz".concat("4j").concat("@").concat("gmail.com")
 
-## 证书
+
+## License
 
 	Copyright (C) 2017 zhuangguangquan
-
+	
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
 	You may obtain a copy of the License at
-
+	
 	   http://www.apache.org/licenses/LICENSE-2.0
-
+	
 	Unless required by applicable law or agreed to in writing, software
 	distributed under the License is distributed on an "AS IS" BASIS,
 	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 	See the License for the specific language governing permissions and
 	limitations under the License.
-
