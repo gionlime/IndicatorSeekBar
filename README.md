@@ -288,25 +288,7 @@ So happy to receive your donation or encouraging words , and I will post this on
 
 ## Thanks-lists
 
-非常感谢列表中的朋友，你们的肯定和支持是我前进的最大动力！
-
-Thanks for all the friends on the lists!
-
-|Name/昵称|Date/日期|Payment Tools/方式|Words/留言|Friendly link/友情连接|
-|:---:|:---:|:---:|:---:|:---:|
-|[E*e]|2019-06-27|微信| | |
-|[*●]|2019-06-14|微信| | |
-|[*宣]|2019-06-05|支付宝| | |
-|[*圆]|2019-05-29|支付宝|加油|[GitHub/SaltedFish999](https://github.com/SaltedFish999)|
-|[*兴明]|2019-02-12|支付宝| |[GitHub/jdpxiaoming](https://github.com/jdpxiaoming)|
-|[*j!n]|2019-01-08|微信|666|[GitHub/jincom](https://github.com/jincom)|
-|[*乐]|2018-12-19|支付宝| | |
-|[*勇]|2018-12-05|微信| | |
-|[*天佑]|2018-11-05|支付宝| | |
-|[*勇]|2018-10-16|支付宝| | |
-|[*利成]|2018-05-22|支付宝| | |
-
-<img src="https://github.com/warkiz/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/alipay.png?raw=true" /><img src="https://github.com/warkiz/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/wechat_pay.png?raw=true" />
+<img src="https://github.com/gionlime/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/alipay.png?raw=true" /><img src="https://github.com/gionlime/IndicatorSeekBar/blob/master/app/src/main/res/mipmap-xxhdpi/wechat_pay.png?raw=true" />
 
 ## Contact me
 
